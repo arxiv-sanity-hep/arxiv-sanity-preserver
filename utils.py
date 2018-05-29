@@ -9,24 +9,24 @@ import tempfile
 # -----------------------------------------------------------------------------
 class Config(object):
     # main paper information repo file
-    db_path = 'db.p'
+    db_path = os.environ.get('ARXIVSANITY_DBPATH','db.p')
     # intermediate processing folders
-    pdf_dir = os.path.join('data', 'pdf')
-    txt_dir = os.path.join('data', 'txt')
-    thumbs_dir = os.path.join('static', 'thumbs')
+    pdf_dir = os.environ.get('ARXIVSANITY_PDFDIR',os.path.join('data', 'pdf'))
+    txt_dir = os.environ.get('ARXIVSANITY_TXTDIR',os.path.join('data', 'txt'))
+    thumbs_dir = os.environ.get('ARXIVSANITY_STATICDIR',os.path.join('static', 'thumbs'))
     # intermediate pickles
-    tfidf_path = 'tfidf.p'
-    meta_path = 'tfidf_meta.p'
-    sim_path = 'sim_dict.p'
-    user_sim_path = 'user_sim.p'
+    tfidf_path = os.environ.get('ARXIVSANITY_TFIDFPATH','tfidf.p')
+    meta_path = os.environ.get('ARXIVSANITY_METAPATH','tfidf_meta.p')
+    sim_path = os.environ.get('ARXIVSANITY_SIMPATH','sim_dict.p')
+    user_sim_path = os.environ.get('ARXIVSANITY_USERSIMPATH','user_sim.p')
     # sql database file
-    db_serve_path = 'db2.p' # an enriched db.p with various preprocessing info
-    database_path = 'as.db'
-    serve_cache_path = 'serve_cache.p'
-    
+    db_serve_path = os.environ.get('ARXIVSANITY_DBSERVEPATH','db2.p') # an enriched db.p with various preprocessing info
+    database_path = os.environ.get('ARXIVSANITY_DATABASEPATH','as.p')
+    serve_cache_path = os.environ.get('ARXIVSANITY_SERVECACHEPATH','serve_cache.p')
+
     beg_for_hosting_money = 1 # do we beg the active users randomly for money? 0 = no.
-    banned_path = 'banned.txt' # for twitter users who are banned
-    tmp_dir = 'tmp'
+    banned_path = os.environ.get('ARXIVSANITY_BANNEDPATH','banned.txt') # for twitter users who are banned
+    tmp_dir = os.environ.get('ARXIVSANITY_TMPPATH','tmp')
 
 # Context managers for atomic writes courtesy of
 # http://stackoverflow.com/questions/2333872/atomic-writing-to-file-with-python
