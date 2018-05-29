@@ -101,7 +101,7 @@ function populateList(lstid, msg, lst) {
   } else {
     for(var i=0;i<n;i++) {
       var f = lst[i];
-      
+
       var fd = div.append('div').classed('user-li', true);
       if(f.active === 1){ fd.classed('li-active', true);
       } else { fd.classed('li-inactive', true); }
@@ -122,7 +122,7 @@ function populateList(lstid, msg, lst) {
         }
       }(jfd, request_data));
 
-      // attach an event handler to OK, allow this user to follow me      
+      // attach an event handler to OK, allow this user to follow me
       if(lstid === 'followers' && f.active == 0) {
         var fdok = fd.append('div').classed('fdok', true).html('OK');
         var jfdok = $(fdok.node());
@@ -131,7 +131,7 @@ function populateList(lstid, msg, lst) {
           return function() {
             $.post("/addfollow", jdict).done(function(elt, elt2){ // dont think closure in closure is necessary here, being lazy
               return function(data){
-                if(data === 'OK') { 
+                if(data === 'OK') {
                   // ok we can follow this user
                   elt.classed('li-active', true);
                   elt.classed('li-inactive', false);
@@ -201,7 +201,7 @@ $(document).ready(function(){
   <div id="tittxt">
     <h1>Arxiv Sanity Preserver</h1>
     Built in spare time by <a href="https://twitter.com/karpathy">@karpathy</a> to accelerate research.<br>
-    Serving last {{ totpapers }} papers from cs.[CV|CL|LG|AI|NE]/stat.ML
+    Serving last {{ totpapers }} papers from hep-ex/hep-ph/hep-th
   </div>
   </a>
 </div>
@@ -233,7 +233,7 @@ $(document).ready(function(){
     </div>
   </div>
   {% endif %}
-  
+
 </div>
 
 <br><br><br><br><br><br>
